@@ -17,7 +17,7 @@ def calculadora(num1: float, num2: float, operador: str) -> float:
     elif operador == "/":
         result = num1 / num2
     elif operador == "^":
-        result = num1 ^ num2
+        result = pow(int(num1), int(num2))
     return result
 
 def menu():
@@ -58,16 +58,39 @@ if __name__ == "__main__":
             print('Calculadora')
             print('----------------------------------\n')
             
-            menu()
+            [a, b, c] = menu()
+            resultado = calculadora(a, b, c)
 
 
         except ValueError:
             print('\nDados inválidos! -> Tente novamente!')
             time.sleep(2)
+            continue
 
         except ZeroDivisionError:
             print('\nImpossível dividir por zero! -> Tente novamente!')
             time.sleep(2)
-        break
-
+            continue
+        
+        print(f"\nO resultado é da operação é: {resultado}")
+        time.sleep(2)
+        
+        while True:
+            try:
+                print("\nDeseja continuar? [Y/N]")
+                escolha = input("> ").strip().capitalize()
+                if escolha not in ["Y","N"]: raise Exception
+            except Exception:
+                print('\nEscolha inválida! -> Tente novamente!')
+                time.sleep(2)
+                continue
+            break
+        if escolha == "Y":
+            time.sleep(2)
+            continue
+        elif escolha == "N":
+            time.sleep(2)
+            break
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('\nVolte sempre!\n')
