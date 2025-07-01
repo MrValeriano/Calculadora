@@ -10,7 +10,14 @@ def calculadora(num1: float, num2: float, operador: str) -> float:
     result = float("nan")
     if operador == '+':
         result = num1 + num2
-
+    elif operador == "-":
+        result = num1 - num2
+    elif operador == "-":
+        result = num1 * num2
+    elif operador == "-":
+        result = num1 / num2
+    elif operador == "-":
+        result = num1 ^ num2
     return result
 
 
@@ -30,5 +37,6 @@ if __name__ == "__main__":
         except ZeroDivisionError:
             print('Impossível dividir por zero! -> Tente novamente!')
             time.sleep(2)
+        break
 
     print('\nVolte sempre!\n')
